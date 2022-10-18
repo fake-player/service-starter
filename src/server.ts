@@ -1,11 +1,21 @@
-import { ApolloServer } from 'apollo-server'
-import { resolvers, typeDefs } from './schema'
-import { context } from './context'
+import { ApolloServer } from '@apollo/server'
+import { startStandaloneServer } from '@apollo/server/standalone'
+import { readFileSync } from 'fs'
+import { resolvers } from './resolvers'
 
-new ApolloServer({ resolvers, typeDefs, context: context }).listen(
-  { port: 4000 },
-  () =>
-    console.log(`
-🚀 Server ready at: http://localhost:4000
-⭐️ See sample queries: http://pris.ly/e/ts/graphql-sdl-first#using-the-graphql-api`),
-)
+const typeDefs = readFileSync('./graphql/schema.graphql', 'utf-8')
+
+async function startApolloServer() {
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+  })
+
+  const { url } = await startStandaloneServer(server, {
+    listen: { port: 4000 },
+  })
+
+  console.log(`🚀  Server ready at ${url}`)
+}
+
+startApolloServer()
