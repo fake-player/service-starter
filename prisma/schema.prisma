@@ -6,3 +6,7 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model Example {
+  id String @id @default(cuid()) @map("_id")
+}
