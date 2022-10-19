@@ -1,7 +1,11 @@
 {
   "name": "typescript-graphql",
   "scripts": {
-    "dev": "ts-node-dev --no-notify --respawn --transpile-only src/server"
+    "node-watch": "ts-node-dev --respawn --transpile-only src/server",
+    "codegen": "graphql-codegen --config codegen.config.ts",
+    "codegen-watch": "npm run codegen -- --watch",
+    "predev": "npx prisma generate",
+    "dev": "concurrently npm:node-watch npm:codegen-watch"
   },
   "prettier": {
     "semi": false,
@@ -16,9 +20,13 @@
     "graphql-scalars": "1.19.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "2.13.7",
+    "@graphql-codegen/typescript": "2.7.4",
+    "@graphql-codegen/typescript-resolvers": "2.7.4",
     "@types/graphql": "14.5.0",
     "@types/node": "16.11.66",
     "@types/ws": "8.5.3",
+    "concurrently": "^7.4.0",
     "prisma": "4.4.0",
     "ts-node": "10.9.1",
     "ts-node-dev": "2.0.0",
