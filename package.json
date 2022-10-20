@@ -1,12 +1,14 @@
 {
   "name": "typescript-graphql",
   "scripts": {
-    "test": "jest -i",
+    "pretest": "npx prisma generate",
+    "test": "jest -i --watch",
     "node-watch": "ts-node-dev --respawn --transpile-only src/index",
     "codegen": "graphql-codegen --config codegen.config.ts",
     "codegen-watch": "npm run codegen -- -w",
     "predev": "npx prisma generate",
-    "dev": "concurrently npm:node-watch npm:codegen-watch"
+    "dev": "concurrently npm:node-watch npm:codegen-watch",
+    "prestart": "npx prisma db push"
   },
   "prettier": {
     "semi": false,
