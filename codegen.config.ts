@@ -7,7 +7,6 @@ const config: CodegenConfig = {
     'src/__generated__/graphql.ts': {
       plugins: ['typescript', 'typescript-resolvers'],
       config: {
-        useIndexSignature: true,
         defaultMapper: 'Partial<{T}>',
         maybeValue: 'T | null | undefined',
       },
