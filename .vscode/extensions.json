@@ -3,6 +3,7 @@
     "prisma.prisma",
     "graphql.vscode-graphql-syntax",
     "esbenp.prettier-vscode",
-    "ms-azuretools.vscode-docker"
+    "ms-azuretools.vscode-docker",
+    "GraphQL.vscode-graphql"
   ]
 }
