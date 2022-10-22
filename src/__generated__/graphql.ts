@@ -11,7 +11,8 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  DateTime: any;
+  DateTime: Date;
+  Void: void;
 };
 
 export type Example = {
@@ -98,6 +99,7 @@ export type ResolversTypes = {
   Example: ResolverTypeWrapper<Partial<Example>>;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Partial<Scalars['String']>>;
+  Void: ResolverTypeWrapper<Partial<Scalars['Void']>>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -107,6 +109,7 @@ export type ResolversParentTypes = {
   Example: Partial<Example>;
   Query: {};
   String: Partial<Scalars['String']>;
+  Void: Partial<Scalars['Void']>;
 };
 
 export interface DateTimeScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['DateTime'], any> {
@@ -122,9 +125,14 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   example?: Resolver<ResolversTypes['Example'], ParentType, ContextType>;
 };
 
+export interface VoidScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Void'], any> {
+  name: 'Void';
+}
+
 export type Resolvers<ContextType = any> = {
   DateTime?: GraphQLScalarType;
   Example?: ExampleResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  Void?: GraphQLScalarType;
 };
 

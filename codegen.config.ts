@@ -9,6 +9,10 @@ const config: CodegenConfig = {
       config: {
         defaultMapper: 'Partial<{T}>',
         maybeValue: 'T | null | undefined',
+        scalars: {
+          DateTime: 'Date',
+          Void: 'void',
+        },
       },
     },
   },
