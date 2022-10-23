@@ -1,15 +1,10 @@
-import { startStandaloneServer } from '@apollo/server/standalone'
-import { createServer } from './server'
 import { port } from './config/config.json'
+import { startApolloServer } from './server'
 
-async function startApolloServer() {
-  const server = await createServer()
-
-  const { url } = await startStandaloneServer(server, {
-    listen: { port },
-  })
+async function startServer() {
+  const { url } = await startApolloServer({ port })
 
   console.log(`🚀  Server ready at ${url}`)
 }
 
-startApolloServer()
+startServer()

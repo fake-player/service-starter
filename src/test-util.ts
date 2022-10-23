@@ -1,15 +1,10 @@
-import { startStandaloneServer } from '@apollo/server/standalone'
 import request from 'supertest'
-import { createServer } from './server'
+import { startApolloServer } from './server'
 
 let serverUrl
 
 export const startServer = async () => {
-  const server = await createServer()
-  const options = {
-    listen: { port: 0 },
-  }
-  const { url } = await startStandaloneServer(server, options)
+  const { server, url } = await startApolloServer({ port: 0 })
 
   serverUrl = url
 
