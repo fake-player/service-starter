@@ -2,3 +2,5 @@ node_modules/
 dist/
 *.env*
 !.env.example
+src/config/*
+!src/config/*.example

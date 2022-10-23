@@ -4,7 +4,8 @@
     "baseUrl": ".",
     "outDir": "dist",
     "rootDir": "src",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "resolveJsonModule": true
   },
   "include": ["src/**/*", "node_modules/jest-extended"]
 }
